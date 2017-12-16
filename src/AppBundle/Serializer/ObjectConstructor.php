@@ -11,7 +11,7 @@ use JMS\Serializer\VisitorInterface;
  * Serializer object constructor
  * Using object constructor to create objects
  */
-class ObjectConstructor implements ObjectConstructorInterface
+final class ObjectConstructor implements ObjectConstructorInterface
 {
 
     /**
