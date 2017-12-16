@@ -1,7 +1,7 @@
 Jazzy recruitment task
 ======================
 
-[Demo](https://jazzy.michalhost.com/)
+
 ___________
 
 ## Overview
