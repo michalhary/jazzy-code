@@ -9,12 +9,21 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
  */
 class ApiException extends HttpException
 {
+    /**
+     * Constructor
+     *
+     * @param int $statusCode Http stats code
+     * @param string $message Exception message
+     * @param \Exception $previous
+     * @param array $headers
+     * @param int $code
+     */
     public function __construct(
-        $statusCode = 500,
-        $message = 'Internal Server Error',
+        int $statusCode = 500,
+        string $message = 'Internal Server Error',
         \Exception $previous = null,
         array $headers = [],
-        $code = 0
+        int $code = 0
     ) {
         parent::__construct($statusCode, $message, $previous, $headers, $code);
     }
