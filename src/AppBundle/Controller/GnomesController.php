@@ -8,9 +8,9 @@ use AppBundle\Action\Gnomes\ReadGnomeAction;
 use AppBundle\Action\Gnomes\ReadGnomesAction;
 use AppBundle\Action\Gnomes\UpdateGnomeAction;
 use FOS\RestBundle\Controller\Annotations as Rest;
+use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 
 /**
  * Gnomes controller
@@ -25,6 +25,7 @@ final class GnomesController extends AbstractController
      * Get list of all gnomes
      *
      * @Rest\Get("")
+     * @Rest\View(serializerGroups={"basic"})
      *
      * @ApiDoc(
      *  section="Gnomes",
@@ -51,6 +52,7 @@ final class GnomesController extends AbstractController
      * Create new gnome
      *
      * @Rest\Post("")
+     * @Rest\View(serializerGroups={"full"})
      *
      * @ApiDoc(
      *  section="Gnomes",
@@ -86,6 +88,7 @@ final class GnomesController extends AbstractController
      * Get gnome by id
      *
      * @Rest\Get("/{id}", requirements={"id"="\d+"})
+     * @Rest\View(serializerGroups={"full"})
      *
      * @ApiDoc(
      *  section="Gnomes",
@@ -122,6 +125,7 @@ final class GnomesController extends AbstractController
      * Update gnome by id
      *
      * @Rest\Put("/{id}", requirements={"id"="\d+"})
+     * @Rest\View(serializerGroups={"full"})
      *
      * @ApiDoc(
      *  section="Gnomes",
