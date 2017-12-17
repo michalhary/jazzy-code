@@ -30,6 +30,23 @@ services:
 
 ### App configuration
 
+    AppBundle\Uploader\LocalUploader:
+        arguments: ['%upload_directory%']
+        public: true
+
+    AppBundle\Uploader\UploaderInterface: '@AppBundle\Uploader\LocalUploader'
+
+    AppBundle\Manager\TmpFilesManager:
+        arguments: ['%tmp_directory%']
+
+    AppBundle\Manager\TmpFilesManagerInterface: '@AppBundle\Manager\TmpFilesManager'
+
     # Use custom Object Constructor (JMS Serializer)
     jms_serializer.unserialize_object_constructor:
         class: AppBundle\Serializer\ObjectConstructor
+
+    # JMS Serializer Handlers
+    AppBundle\Serializer\Handler\:
+        resource: '../../src/AppBundle/Serializer/Handler/*'
+        tags:
+            - { name: jms_serializer.subscribing_handler }
