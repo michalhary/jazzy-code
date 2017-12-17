@@ -36,3 +36,7 @@ monolog:
         #chromephp:
         #    type: chromephp
         #    level: info
+
+nelmio_api_doc:
+    cache:
+        enabled: false
