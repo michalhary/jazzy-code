@@ -7,6 +7,7 @@ use AppBundle\Action\Gnomes\DeleteGnomeAction;
 use AppBundle\Action\Gnomes\ReadGnomeAction;
 use AppBundle\Action\Gnomes\ReadGnomesAction;
 use AppBundle\Action\Gnomes\UpdateGnomeAction;
+use AppBundle\Entity\Gnome;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -42,6 +43,9 @@ final class GnomesController extends AbstractController
      * )
      *
      * @param Request $request
+     * @param ReadGnomesAction $action
+     *
+     * @return Gnome[]
      */
     public function listAction(Request $request, ReadGnomesAction $action)
     {
@@ -69,7 +73,8 @@ final class GnomesController extends AbstractController
      *  },
      *  parameters={
      *    {"name"="strength", "dataType"="integer","format"="{min: 0, max: 100}"},
-     *    {"name"="age", "dataType"="integer","format"="{min: 0, max: 100}"}
+     *    {"name"="age", "dataType"="integer","format"="{min: 0, max: 100}"},
+     *    {"name"="avatar", "dataType"="string","format"="PNG (base64)","description"="PNG image encoded with base64"}
      *  },
      *  statusCodes={
      *    200="Success. Return created gnome",
@@ -78,6 +83,9 @@ final class GnomesController extends AbstractController
      * )
      *
      * @param Request $request
+     * @param CreateGnomeAction $action
+     *
+     * @return Gnome
      */
     public function createAction(Request $request, CreateGnomeAction $action)
     {
@@ -115,6 +123,9 @@ final class GnomesController extends AbstractController
      *
      * @param Request $request
      * @param int id Gnome id
+     * @param ReadGnomeAction $action
+     *
+     * @return Gnome
      */
     public function readAction(Request $request, int $id, ReadGnomeAction $action)
     {
@@ -150,7 +161,8 @@ final class GnomesController extends AbstractController
      *  },
      *  parameters={
      *    {"name"="strength", "dataType"="integer","format"="{min: 0, max: 100}"},
-     *    {"name"="age", "dataType"="integer","format"="{min: 0, max: 100}"}
+     *    {"name"="age", "dataType"="integer","format"="{min: 0, max: 100}"},
+     *    {"name"="avatar", "dataType"="string","format"="PNG (base64)","description"="PNG image encoded with base64"}
      *  },
      *  statusCodes={
      *    200="Success. Return updated gnome",
@@ -161,6 +173,9 @@ final class GnomesController extends AbstractController
      *
      * @param Request $request
      * @param int id Gnome id
+     * @param UpdateGnomeAction $action
+     *
+     * @return Gnome
      */
     public function updateAction(Request $request, int $id, UpdateGnomeAction $action)
     {
@@ -191,7 +206,11 @@ final class GnomesController extends AbstractController
      * )
      *
      * @param Request $request
+     *
      * @param int id Gnome id
+     * @param DeleteGnomeAction $action
+     *
+     * @return bool
      */
     public function deleteAction(Request $request, int $id, DeleteGnomeAction $action)
     {
