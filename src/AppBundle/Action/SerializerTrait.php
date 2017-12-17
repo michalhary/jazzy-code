@@ -30,7 +30,7 @@ trait SerializerTrait
      * @ignore
      * @param SerializerInterface $serializer
      */
-    public final function setSerializer(SerializerInterface $serializer): void
+    final public function setSerializer(SerializerInterface $serializer): void
     {
         $this->serializer = $serializer;
     }
@@ -57,7 +57,7 @@ trait SerializerTrait
      *
      * @param string $json
      * @param string[] $groups
-     * 
+     *
      * @return object
      *
      * @throws BadRequesApiHttpException
@@ -68,8 +68,12 @@ trait SerializerTrait
 
         $data = null;
         try {
-            $data = $this->serializer->deserialize($json, $this->getDataClass(), 'json',
-                $context);
+            $data = $this->serializer->deserialize(
+                $json,
+                $this->getDataClass(),
+                'json',
+                $context
+            );
         } catch (JmsRuntimeException $e) {
             throw new BadRequesApiHttpException($e->getMessage());
         } catch (ObjectConstructionException $e) {
@@ -87,7 +91,7 @@ trait SerializerTrait
      * Create deserialization context
      *
      * @param string[] $groups
-     * 
+     *
      * @return Context
      */
     protected function createDeserializationContext(array $groups = []): Context

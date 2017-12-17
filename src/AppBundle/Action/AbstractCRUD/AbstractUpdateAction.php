@@ -13,7 +13,6 @@ use Symfony\Component\HttpFoundation\Request;
  */
 abstract class AbstractUpdateAction extends AbstractCrudAction
 {
-
     use SerializerTrait;
     use ValidatorTrait;
 

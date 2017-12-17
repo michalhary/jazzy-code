@@ -28,7 +28,7 @@ trait ValidatorTrait
      * @ignore
      * @param ValidatorInterface $validator
      */
-    public final function setValidator(ValidatorInterface $validator): void
+    final public function setValidator(ValidatorInterface $validator): void
     {
         $this->validator = $validator;
     }

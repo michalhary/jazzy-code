@@ -17,7 +17,7 @@ abstract class AbstractReadAction extends AbstractCrudAction
      * @param int $id object id
      *
      * @return object
-     * 
+     *
      * @throws NotFoundApiException
      */
     public function __invoke(Request $request, int $id)
