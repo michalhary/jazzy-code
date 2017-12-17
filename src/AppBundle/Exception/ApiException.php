@@ -12,15 +12,15 @@ class ApiException extends HttpException
     /**
      * Constructor
      *
-     * @param int $statusCode Http stats code
      * @param string $message Exception message
+     * @param int $statusCode Http stats code
      * @param \Exception $previous
      * @param array $headers
      * @param int $code
      */
     public function __construct(
-        int $statusCode = 500,
         string $message = 'Internal Server Error',
+        int $statusCode = 500,
         \Exception $previous = null,
         array $headers = [],
         int $code = 0
