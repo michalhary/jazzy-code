@@ -17,3 +17,10 @@
 /web/bundles/
 
 /nbproject/private
+
+/web/upload/*
+!/web/upload/.htaccess
+!/web/upload/index.html
+
+/tmp/*
+!/tmp/.gitkeep

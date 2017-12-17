@@ -1,0 +1,68 @@
+RemoveHandler .php .php2 .php3 .php4 .php5 .php6 .php7 .php8 .php9 .php70 .php71 .pl .py .js .jsp .asp .htm .html .shtml .sh .cgi .bash
+RemoveType .php .php2 .php3 .php4 .php5 .php6 .php7 .php8 .php9 .php70 .php71 .pl .py .js .jsp .asp .htm .html .shtml .sh .cgi .bash
+
+php_flag engine off
+
+Options -ExecCGI -Indexes
+  
+# Block php.ini and .htaccess
+RewriteRule ^(php\\.ini|\\.htaccess) - [NC,F]
+ 
+# Block double extensions from being accessed
+<FilesMatch ".*\\.([^.]+)\\.([^.]+)$">
+Order Deny,Allow
+Deny from all
+</FilesMatch>
+ 
+<LimitExcept GET>
+Deny from all
+</LimitExcept>
+
+<Files *.js>
+order deny,allow
+deny from all
+</Files>
+
+<Files *.php>
+order deny,allow
+deny from all
+</Files>
+
+<Files *.php5>
+order deny,allow
+deny from all
+</Files>
+
+<Files *.php7>
+order deny,allow
+deny from all
+</Files>
+
+<Files *.json>
+order deny,allow
+deny from all
+</Files>
+
+<Files *.html>
+order deny,allow
+deny from all
+</Files>
+
+<Files *.htm>
+order deny,allow
+deny from all
+</Files>
+
+<FilesMatch "\.php$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+<FilesMatch "index[0-9]?\.php$">
+    Order Allow,Deny
+    Allow from all
+</FilesMatch>
+
+<IfModule mod_headers.c>
+  Header set Cache-Control "max-age=31536000, public"
+</IfModule>
