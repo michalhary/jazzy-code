@@ -74,10 +74,8 @@ jms_serializer:
     default_context:
         serialization:
             serialize_null: true
-            groups: ['default']
         deserialization:
             serialize_null: false
-            groups: ['default']
 
 nelmio_api_doc:
     name: 'API documentation'
