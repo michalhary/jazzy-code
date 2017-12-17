@@ -3,7 +3,6 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use AppBundle\Entity\Image;
 use Symfony\Component\Validator\Constraints as Assert;
 use JMS\Serializer\Annotation as JMS;
 
@@ -78,10 +77,14 @@ class Gnome
     private $age;
 
     /**
+     * Gnome's avatar (image URL)
+     *
      * @var Image
      *
-     * @ORM\ManyToOne(targetEntity="Image", cascade={"persist"}, fetch="LAZY")
+     * @ORM\ManyToOne(targetEntity="Image", cascade={"persist", "remove"}, fetch="LAZY")
      * @ORM\JoinColumn(name="avatar_id", referencedColumnName="id", nullable=true)
+     *
+     * @JMS\Groups({"full"})
      */
     private $avatar;
 
@@ -106,7 +109,7 @@ class Gnome
      */
     public function __toString()
     {
-        return (string) $this->name;
+        return (string)$this->name;
     }
 
     /**
@@ -134,6 +137,16 @@ class Gnome
     }
 
     /**
+     * Get name
+     *
+     * @return string|null
+     */
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    /**
      * Set name
      *
      * @param string $name
@@ -148,13 +161,13 @@ class Gnome
     }
 
     /**
-     * Get name
+     * Get strength
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getName(): ?string
+    public function getStrength(): ?int
     {
-        return $this->name;
+        return $this->strength;
     }
 
     /**
@@ -172,13 +185,13 @@ class Gnome
     }
 
     /**
-     * Get strength
+     * Get age
      *
      * @return int|null
      */
-    public function getStrength(): ?int
+    public function getAge(): ?int
     {
-        return $this->strength;
+        return $this->age;
     }
 
     /**
@@ -196,13 +209,13 @@ class Gnome
     }
 
     /**
-     * Get age
+     * Get avatar
      *
-     * @return int|null
+     * @return Image|null
      */
-    public function getAge(): ?int
+    public function getAvatar(): ?Image
     {
-        return $this->age;
+        return $this->avatar;
     }
 
     /**
@@ -217,15 +230,5 @@ class Gnome
         $this->avatar = $avatar;
 
         return $this;
-    }
-
-    /**
-     * Get avatar
-     *
-     * @return Image|null
-     */
-    public function getAvatar(): ?Image
-    {
-        return $this->avatar;
     }
 }

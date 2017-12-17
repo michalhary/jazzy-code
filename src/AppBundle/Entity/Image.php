@@ -3,7 +3,6 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Gnome
@@ -14,6 +13,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Image
 {
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=512, nullable=false)
+     */
+    protected $filename;
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -23,20 +28,11 @@ class Image
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=512, nullable=false)
-     *
-     * @Assert\NotBlank
-     */
-    protected $filename;
-
-    /**
      * Constructor
      *
      * @param string $filename Filename (with extension)
      */
-    public function __construct(string $filename = null)
+    public function __construct(string $filename)
     {
         $this->filename = $filename;
     }
@@ -48,7 +44,7 @@ class Image
      */
     public function __toString()
     {
-        return (string) $this->filename;
+        return (string)$this->filename;
     }
 
     /**
@@ -75,9 +71,10 @@ class Image
      * Set filename
      *
      * @param string $filename
+     *
      * @return self
      */
-    public function setFilename(string $filename)
+    public function setFilename(string $filename): Image
     {
         $this->filename = $filename;
 
