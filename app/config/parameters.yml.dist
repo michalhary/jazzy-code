@@ -10,3 +10,7 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret: ThisTokenIsNotSoSecretChangeIt
+
+    # File upload
+    upload_directory: upload
+    tmp_directory: '../tmp'
