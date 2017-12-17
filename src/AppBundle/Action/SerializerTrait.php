@@ -8,6 +8,7 @@ use JMS\Serializer\Context;
 use JMS\Serializer\DeserializationContext;
 use JMS\Serializer\Exception\ObjectConstructionException;
 use JMS\Serializer\Exception\ValidationFailedException;
+use JMS\Serializer\Exception\RuntimeException as JmsRuntimeException;
 use JMS\Serializer\SerializationContext;
 use JMS\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Constraints\Required;
