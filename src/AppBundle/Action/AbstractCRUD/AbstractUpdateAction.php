@@ -25,7 +25,7 @@ abstract class AbstractUpdateAction extends AbstractCrudAction
      * @return object
      *
      * @throws NotFoundApiException
-     * @throws BadRequesApiHttpException
+     * @throws BadRequestApiException
      */
     public function __invoke(Request $request, int $id)
     {
@@ -35,7 +35,7 @@ abstract class AbstractUpdateAction extends AbstractCrudAction
         }
 
         $bodyId = $request->request->get('id', null);
-        if ($bodyId !== null && (int) $bodyId !== $id) {
+        if ($bodyId !== null && (int)$bodyId !== $id) {
             throw new BadRequestApiException('Id in query parameter doesn\'t match id in request body');
         }
         unset($bodyId);
@@ -44,7 +44,7 @@ abstract class AbstractUpdateAction extends AbstractCrudAction
         $newData = $this->deserialize($content);
         $newData->setId($oldData->getId());
         unset($oldData);
-        
+
         $this->validate($newData);
 
         $this->em->merge($newData);

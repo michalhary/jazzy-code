@@ -21,6 +21,8 @@ abstract class AbstractCreateAction extends AbstractCrudAction
      * @param Request $request
      *
      * @return object
+     *
+     * @throws BadRequestApiException
      */
     public function __invoke(Request $request)
     {

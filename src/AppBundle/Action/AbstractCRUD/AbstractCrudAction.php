@@ -29,16 +29,6 @@ abstract class AbstractCrudAction
     }
 
     /**
-     * Get entity repository
-     *
-     * @return EntityRepository
-     */
-    protected function getRepository(): EntityRepository
-    {
-        return $this->em->getRepository($this->getDataClass());
-    }
-
-    /**
      * Find object by id
      * Throws exception if not found
      *
@@ -51,13 +41,23 @@ abstract class AbstractCrudAction
     protected function findOneById(int $id)
     {
         $repository = $this->getRepository();
-        $data       = $repository->findOneBy(['id' => $id]);
+        $data = $repository->findOneBy(['id' => $id]);
 
         if ($data === null) {
             throw new NotFoundApiException("Object with given id does not exist");
         }
 
         return $data;
+    }
+
+    /**
+     * Get entity repository
+     *
+     * @return EntityRepository
+     */
+    protected function getRepository(): EntityRepository
+    {
+        return $this->em->getRepository($this->getDataClass());
     }
 
     /**
