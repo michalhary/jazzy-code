@@ -1,7 +1,7 @@
 NelmioApiDocBundle:
-    resource: "@NelmioApiDocBundle/Resources/config/routing/swaggerui.xml"
+    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
     prefix:   /
-    
+
 app:
     resource: '@AppBundle/Controller/'
     type: rest

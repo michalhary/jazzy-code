@@ -80,14 +80,22 @@ jms_serializer:
             groups: ['default']
 
 nelmio_api_doc:
-    documentation:
+    name: 'API documentation'
+    sandbox:
+        enabled: true
+        request_format:
+            method: accept_header
+            formats:
+                json: 'application/json'
+            default_format: json
+        body_format:
+            formats: [ json ]
+            default_format: json
+    swagger:
+        api_base_path: /api/v1
+        api_version: '1.0'
         info:
             title: 'Jazzy code'
-            version: '1.0.0'
             description: 'Recruitment task done with Symfony Standard Edition'
-    routes:
-        path_patterns:
-            - ^/api
-    models:
-        use_jms: true
-        
+    cache:
+        enabled: true
