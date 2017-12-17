@@ -120,13 +120,27 @@ class Gnome
     }
 
     /**
+     * Set id
+     *
+     * @param int $id
+     *
+     * @return Gnome
+     */
+    public function setId(int $id): Gnome
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
      * Set name
      *
      * @param string $name
      *
      * @return Gnome
      */
-    public function setName(string $name)
+    public function setName(string $name): Gnome
     {
         $this->name = $name;
 
@@ -150,7 +164,7 @@ class Gnome
      *
      * @return Gnome
      */
-    public function setStrength(int $strength)
+    public function setStrength(int $strength): Gnome
     {
         $this->strength = $strength;
 
@@ -174,7 +188,7 @@ class Gnome
      *
      * @return Gnome
      */
-    public function setAge(int $age)
+    public function setAge(int $age): Gnome
     {
         $this->age = $age;
 
@@ -198,7 +212,7 @@ class Gnome
      *
      * @return Gnome
      */
-    public function setAvatar(Image $avatar = null)
+    public function setAvatar(Image $avatar = null): Gnome
     {
         $this->avatar = $avatar;
 
