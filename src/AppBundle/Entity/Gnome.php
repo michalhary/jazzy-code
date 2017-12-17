@@ -4,43 +4,76 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use AppBundle\Entity\Image;
+use Symfony\Component\Validator\Constraints as Assert;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * Gnome
  *
  * @ORM\Table(name="gnome")
  * @ORM\Entity
+ *
+ * @JMS\AccessType("public_method")
  */
 class Gnome
 {
 
     /**
+     * Gnome's id
+     *
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     *
+     * @JMS\ReadOnly
+     * @JMS\Groups({"basic", "full"})
      */
     private $id;
 
     /**
+     * Gnome's name
+     *
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=1000)
+     *
+     * @JMS\Groups({"basic", "full"})
+     *
+     * @Assert\Type("string")
+     * @Assert\NotNull
+     * @Assert\Length(min=1, max=1000)
      */
     private $name;
 
     /**
+     * Gnome's strength
+     *
      * @var int
      *
      * @ORM\Column(name="strength", type="smallint")
+     *
+     * @JMS\Groups({"full"})
+     *
+     * @Assert\NotNull
+     * @Assert\Type("int")
+     * @Assert\Range(min=0, max=100)
      */
     private $strength;
 
     /**
+     * Gnome's age
+     *
      * @var int
      *
      * @ORM\Column(name="age", type="smallint")
+     *
+     * @JMS\Groups({"full"})
+     *
+     * @Assert\NotNull
+     * @Assert\Type("int")
+     * @Assert\Range(min=0, max=100)
      */
     private $age;
 
