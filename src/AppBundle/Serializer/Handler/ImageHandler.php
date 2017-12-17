@@ -21,7 +21,7 @@ final class ImageHandler implements SubscribingHandlerInterface
     private $uploader;
 
     /**
-     * Tempory files manager
+     * Temporary files manager
      *
      * @var TmpFilesManagerInterface
      */
