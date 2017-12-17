@@ -91,15 +91,10 @@ trait SerializerTrait
                 'json',
                 $context
             );
-        } catch (JmsRuntimeException $e) {
-            throw new BadRequestApiException($e->getMessage());
-        } catch (DeserializationException $e) {
-            throw new BadRequestApiException($e->getMessage());
-        } catch (ObjectConstructionException $e) {
-            throw new BadRequestApiException($e->getMessage());
-        } catch (ValidationFailedException $e) {
-            throw new BadRequestApiException($e->getMessage());
-        } catch (DeserializationException $e) {
+        } catch (JmsRuntimeException
+            | ObjectConstructionException
+            | ValidationFailedException
+            | DeserializationException $e) {
             throw new BadRequestApiException($e->getMessage());
         } catch (\Exception $e) {
             throw new BadRequestApiException('Could not deserialize data');

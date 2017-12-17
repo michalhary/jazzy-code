@@ -5,7 +5,6 @@ namespace AppBundle\Doctrine\EventListener;
 use AppBundle\Entity\Image;
 use AppBundle\Uploader\UploaderInterface;
 use Doctrine\ORM\Event\LifecycleEventArgs;
-use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
