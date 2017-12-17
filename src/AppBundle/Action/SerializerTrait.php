@@ -2,6 +2,8 @@
 
 namespace AppBundle\Action;
 
+use AppBundle\Exception\BadRequestApiException;
+use AppBundle\Exception\DeserializationException;
 use JMS\Serializer\Context;
 use JMS\Serializer\DeserializationContext;
 use JMS\Serializer\Exception\ObjectConstructionException;
@@ -28,6 +30,7 @@ trait SerializerTrait
      * @Required
      *
      * @ignore
+     *
      * @param SerializerInterface $serializer
      */
     final public function setSerializer(SerializerInterface $serializer): void
@@ -53,6 +56,20 @@ trait SerializerTrait
     }
 
     /**
+     * Create serialization context
+     *
+     * @param string[] $groups
+     *
+     * @return Context
+     */
+    protected function createSerializationContext(array $groups = []): Context
+    {
+        $context = SerializationContext::create();
+        $context->setGroups($groups);
+        return $context;
+    }
+
+    /**
      * Deserialize JSON data
      *
      * @param string $json
@@ -60,7 +77,7 @@ trait SerializerTrait
      *
      * @return object
      *
-     * @throws BadRequesApiHttpException
+     * @throws BadRequestApiException
      */
     protected function deserialize(string $json, array $groups = ["full"])
     {
@@ -75,13 +92,17 @@ trait SerializerTrait
                 $context
             );
         } catch (JmsRuntimeException $e) {
-            throw new BadRequesApiHttpException($e->getMessage());
+            throw new BadRequestApiException($e->getMessage());
+        } catch (DeserializationException $e) {
+            throw new BadRequestApiException($e->getMessage());
         } catch (ObjectConstructionException $e) {
-            throw new BadRequesApiHttpException($e->getMessage());
+            throw new BadRequestApiException($e->getMessage());
         } catch (ValidationFailedException $e) {
-            throw new BadRequesApiHttpException($e->getMessage());
+            throw new BadRequestApiException($e->getMessage());
+        } catch (DeserializationException $e) {
+            throw new BadRequestApiException($e->getMessage());
         } catch (\Exception $e) {
-            throw new BadRequesApiHttpException('Could not deserialize data');
+            throw new BadRequestApiException('Could not deserialize data');
         }
 
         return $data;
@@ -97,20 +118,6 @@ trait SerializerTrait
     protected function createDeserializationContext(array $groups = []): Context
     {
         $context = DeserializationContext::create();
-        $context->setGroups($groups);
-        return $context;
-    }
-
-    /**
-     * Create serialization context
-     *
-     * @param string[] $groups
-     *
-     * @return Context
-     */
-    protected function createSerializationContext(array $groups = []): Context
-    {
-        $context = SerializationContext::create();
         $context->setGroups($groups);
         return $context;
     }

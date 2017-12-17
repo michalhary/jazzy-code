@@ -26,6 +26,7 @@ trait ValidatorTrait
      * @Required
      *
      * @ignore
+     *
      * @param ValidatorInterface $validator
      */
     final public function setValidator(ValidatorInterface $validator): void
@@ -38,9 +39,8 @@ trait ValidatorTrait
      * Throws exception if constraint violations exist
      *
      * @param object $data
-     * @param string[] $groups
      *
-     * @throws BadRequesApiHttpException
+     * @throws BadRequestApiException
      */
     protected function validate($data): void
     {
