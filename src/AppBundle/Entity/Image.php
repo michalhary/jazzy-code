@@ -9,15 +9,17 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="image")
  * @ORM\Entity
+ * @ORM\EntityListeners({"AppBundle\Doctrine\EventListener\ImageEntityListener"})
  */
 class Image
 {
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=512, nullable=false)
+     * @ORM\Column(type="string", length=64, nullable=false)
      */
-    protected $filename;
+    private $filename;
+
     /**
      * @var int
      *
@@ -62,7 +64,7 @@ class Image
      *
      * @return string|null
      */
-    public function getFilename(): ?string
+    public function getFilename(): string
     {
         return $this->filename;
     }

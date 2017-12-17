@@ -45,4 +45,15 @@ final class LocalUploader extends AbstractLocalUploader
     {
         return Uuid::uuid4()->toString() . '.' . $file->guessExtension();
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function removeFile(string $fileName): void
+    {
+        $filePath = $this->targetDir . DIRECTORY_SEPARATOR . $fileName;
+        if (file_exists($filePath)) {
+            unlink($filePath);
+        }
+    }
 }

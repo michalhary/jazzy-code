@@ -29,4 +29,11 @@ interface UploaderInterface
      * @return string Url
      */
     public function fileUrl(string $fileName): string;
+
+    /**
+     * Remove file
+     *
+     * @param string $fileName Uploaded file name (with extension)
+     */
+    public function removeFile(string $fileName): void;
 }

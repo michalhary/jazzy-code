@@ -32,9 +32,10 @@ services:
 
     AppBundle\Uploader\LocalUploader:
         arguments: ['%upload_directory%']
-        public: true
 
-    AppBundle\Uploader\UploaderInterface: '@AppBundle\Uploader\LocalUploader'
+    AppBundle\Uploader\UploaderInterface:
+        alias: 'AppBundle\Uploader\LocalUploader'
+        public: true
 
     AppBundle\Manager\TmpFilesManager:
         arguments: ['%tmp_directory%']
@@ -50,3 +51,7 @@ services:
         resource: '../../src/AppBundle/Serializer/Handler/*'
         tags:
             - { name: jms_serializer.subscribing_handler }
+
+    # Image Entity Listener
+    AppBundle\Doctrine\EventListener\ImageEntityListener:
+        public: true
