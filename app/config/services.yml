@@ -40,7 +40,9 @@ services:
     AppBundle\Manager\TmpFilesManager:
         arguments: ['%tmp_directory%']
 
-    AppBundle\Manager\TmpFilesManagerInterface: '@AppBundle\Manager\TmpFilesManager'
+    AppBundle\Manager\TmpFilesManagerInterface:
+        alias: 'AppBundle\Manager\TmpFilesManager'
+        public: true
 
     # Use custom Object Constructor (JMS Serializer)
     jms_serializer.unserialize_object_constructor:
@@ -55,3 +57,13 @@ services:
     # Image Entity Listener
     AppBundle\Doctrine\EventListener\ImageEntityListener:
         public: true
+
+    # Kernel.terminate Listener
+    AppBundle\EventListener\PostTerminateListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.terminate }
+
+    # Kernel.exception Listener
+    AppBundle\EventListener\ExceptionListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception }

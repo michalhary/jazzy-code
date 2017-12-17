@@ -85,27 +85,18 @@ final class ImageHandler implements SubscribingHandlerInterface
         $fileContent = base64_decode($data, true);
         unset($data);
 
-        $uploadedFilename = null;
-        $tmpImageFile = null;
-
-        try {
-            if ($fileContent === false) {
-                throw new DeserializationException("Invalid data format");
-            }
-
-            $tmpImageFile = $this->tmpManager->createFile($fileContent);
-            unset($fileContent);
-
-            if ($tmpImageFile->getMimeType() !== 'image/png') {
-                throw new DeserializationException("Only PNG files are allowed");
-            }
-
-            $uploadedFilename = $this->uploader->upload($tmpImageFile);
-        } finally {
-            if ($tmpImageFile !== null) {
-                @unlink($tmpImageFile->getPathname());
-            }
+        if ($fileContent === false) {
+            throw new DeserializationException("Invalid data format");
         }
+
+        $tmpImageFile = $this->tmpManager->createFile($fileContent);
+        unset($fileContent);
+
+        if ($tmpImageFile->getMimeType() !== 'image/png') {
+            throw new DeserializationException("Only PNG files are allowed");
+        }
+
+        $uploadedFilename = $this->uploader->upload($tmpImageFile);
 
         return new Image($uploadedFilename);
     }

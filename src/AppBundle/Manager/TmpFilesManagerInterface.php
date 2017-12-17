@@ -15,4 +15,10 @@ interface TmpFilesManagerInterface
      * @return File
      */
     public function createFile(string $content = null): File;
+
+    /**
+     * Delete all temporary files
+     * Delete all temporary files created in this HTTP request
+     */
+    public function deleteAll(): void;
 }

@@ -7,11 +7,30 @@ use Symfony\Component\HttpFoundation\File\File;
 
 class TmpFilesManager implements TmpFilesManagerInterface
 {
+    /**
+     * Directory to store temporary files
+     *
+     * @var string
+     */
     protected $tmpDir;
 
+    /**
+     * Created files
+     * Created files paths
+     *
+     * @var string[]
+     */
+    protected $files;
+
+    /**
+     * Constructor
+     *
+     * @param string $tmpDir
+     */
     public function __construct(string $tmpDir)
     {
         $this->tmpDir = $tmpDir;
+        $this->files  = [];
     }
 
     /**
@@ -33,6 +52,21 @@ class TmpFilesManager implements TmpFilesManagerInterface
             }
         }
 
+        $this->files [] = $filepath;
+
         return new File($filepath);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function deleteAll(): void
+    {
+        foreach ($this->files as $key => $filepath) {
+            if (file_exists($filepath)) {
+                unlink($filepath);
+            }
+            unset($this->files[$key]);
+        }
     }
 }
