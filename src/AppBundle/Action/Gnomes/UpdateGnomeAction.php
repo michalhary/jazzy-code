@@ -12,7 +12,7 @@ final class UpdateGnomeAction
 
     /**
      * Run action
-     * 
+     *
      * @param Request $request
      * @param int $id Gnome id
      */

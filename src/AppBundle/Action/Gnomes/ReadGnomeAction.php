@@ -12,7 +12,7 @@ final class ReadGnomeAction
 
     /**
      * Run action
-     * 
+     *
      * @param Request $request
      * @param int $id Gnome id
      */

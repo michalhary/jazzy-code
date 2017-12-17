@@ -12,7 +12,7 @@ final class DeleteGnomeAction
 
     /**
      * Run action
-     * 
+     *
      * @param Request $request
      * @param int $id Gnome id
      */

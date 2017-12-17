@@ -12,7 +12,7 @@ final class CreateGnomeAction
 
     /**
      * Run action
-     * 
+     *
      * @param Request $request
      */
     public function __invoke(Request $request)
