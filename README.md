@@ -1,8 +1,78 @@
 Jazzy recruitment task
 ======================
 
+## Requirements
+
+- PHP >= 7.1,
+- MySQL / MariaDB
+- Composer
+- Apache 2 (other http servers can be used instead, but rules from all .htaccess file MUST be rewritten to server config)
+
+
+## Installation:
+
+All command mentioned in this file should be run at terminal (CMD) in project main dir.
+
+1. Create empty database
+2. Copy file
+`./app/config/parameters.yml.dist`
+to
+`./app/config/parameters.yml`
+3. Set database parameters in file `./app/config/parameters.yml`.
+YML file is text file. Be careful with indentations (spaces at beginning of each line).
+4. Run command:
+`composer install`
+5. Run command:
+`bower install`
+6. Run command:
+`php ./bin/console doctrine:schema:create`
+7. Now you can access project in browser. Eg.: `http://localhost/jazzy-code/web`
+8. You can configure apache virtualhost (or nginx config) to use `./web/app.php` as document root
+
+
+## Documentation:
+
+* [Api documentation (HTML)](app/Resources/doc/api.html)
+* [Api documentation (Markdown)](app/Resources/doc/api.md)
+* [Swagger (JSON)](app/Resources/doc/swagger.json)
+
+----
+## Assets
+
+
+Views (HTML, Twig files) are stored in `./app/Resources/views`
+
+Directories listed below store only generated content (Do not add own files and modify existing content):
+
+* ./vendor
+* ./web/bundles
+
+Uploaded files (like images) are stored in `./web/upload`
+
+Uploaded files are cached by browser with long expiration time. It never should be modified.
+
+----
+## Cache
+To clear cache in production environment:
+
+1. Run command:
+`php ./bin/console cache:clear -e=prod`
+
+To clear cache in development environment:
+
+1. Run command:
+`php ./bin/console cache:clear -e=dev`
+
+----
+## Changelog
+* 1.0.0 Recruitment task done
+
 
 ___________
+***********
+___________
+
+
 
 ## Overview
 
