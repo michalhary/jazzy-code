@@ -1,0 +1,223 @@
+{
+    "swaggerVersion": "1.2",
+    "apiVersion": "1.0",
+    "basePath": "\/api\/v1",
+    "resourcePath": "\/gnomes",
+    "apis": [
+        {
+            "path": "\/gnomes",
+            "operations": [
+                {
+                    "method": "GET",
+                    "summary": "list action",
+                    "nickname": "get_gnomes",
+                    "parameters": [],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "Success. Return list of all gnomes",
+                            "responseModel": "AppBundle.Entity.Gnome"
+                        }
+                    ],
+                    "type": "AppBundle.Entity.Gnome"
+                },
+                {
+                    "method": "POST",
+                    "summary": "create action",
+                    "nickname": "post_gnomes",
+                    "parameters": [
+                        {
+                            "paramType": "form",
+                            "name": "name",
+                            "type": "string",
+                            "description": "Gnome's name"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "strength",
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "Gnome's strength"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "age",
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "Gnome's age"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "id",
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "Gnome's id"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "avatar",
+                            "$ref": "AppBundle.Entity.Image",
+                            "type": "AppBundle.Entity.Image",
+                            "description": "PNG image encoded with base64"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "Success. Return created gnome",
+                            "responseModel": "AppBundle.Entity.Gnome"
+                        },
+                        {
+                            "code": 400,
+                            "message": "Bad request - invalid data. Return error message"
+                        }
+                    ],
+                    "type": "AppBundle.Entity.Gnome"
+                }
+            ]
+        },
+        {
+            "path": "\/gnomes\/{id}",
+            "operations": [
+                {
+                    "method": "DELETE",
+                    "summary": "delete action",
+                    "nickname": "delete_gnomes",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "name": "id",
+                            "type": "string",
+                            "required": true
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "Success"
+                        },
+                        {
+                            "code": 404,
+                            "message": "Not found - gnome does not exist. Return error message"
+                        }
+                    ]
+                },
+                {
+                    "method": "GET",
+                    "summary": "read action",
+                    "nickname": "get_gnomes",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "name": "id",
+                            "type": "string",
+                            "required": true
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "Success. Return gnome",
+                            "responseModel": "AppBundle.Entity.Gnome"
+                        },
+                        {
+                            "code": 404,
+                            "message": "Not found - gnome does not exist. Return error message"
+                        }
+                    ],
+                    "type": "AppBundle.Entity.Gnome"
+                },
+                {
+                    "method": "PUT",
+                    "summary": "update action",
+                    "nickname": "put_gnomes",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "name": "id",
+                            "type": "string",
+                            "required": true
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "name",
+                            "type": "string",
+                            "description": "Gnome's name"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "strength",
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "Gnome's strength"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "age",
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "Gnome's age"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "id",
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "Gnome's id"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "avatar",
+                            "$ref": "AppBundle.Entity.Image",
+                            "type": "AppBundle.Entity.Image",
+                            "description": "PNG image encoded with base64"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "Success. Return updated gnome",
+                            "responseModel": "AppBundle.Entity.Gnome"
+                        },
+                        {
+                            "code": 404,
+                            "message": "Not found - gnome does not exist. Return error message"
+                        },
+                        {
+                            "code": 400,
+                            "message": "Bad request - invalid data. Return error message"
+                        }
+                    ],
+                    "type": "AppBundle.Entity.Gnome"
+                }
+            ]
+        }
+    ],
+    "models": {
+        "AppBundle.Entity.Gnome": {
+            "id": "AppBundle.Entity.Gnome",
+            "description": "",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "Gnome's id",
+                    "format": "int32"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Gnome's name"
+                }
+            },
+            "required": []
+        },
+        "AppBundle.Entity.Image": {
+            "id": "AppBundle.Entity.Image",
+            "description": "PNG image encoded with base64",
+            "properties": [],
+            "required": []
+        }
+    },
+    "produces": [],
+    "consumes": [],
+    "authorizations": []
+}
