@@ -97,7 +97,7 @@ trait SerializerTrait
             | ValidationFailedException
             | DeserializationException $e) {
             throw new BadRequestApiException($e->getMessage());
-        } catch (\Exception $e) {
+        } catch (\Exception | \Throwable $e) {
             throw new BadRequestApiException('Could not deserialize data');
         }
 
