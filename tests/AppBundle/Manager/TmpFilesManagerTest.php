@@ -15,12 +15,12 @@ class TmpFilesManagerTest extends WebTestCase
     public function setUp()
     {
         self::bootKernel();
-        chdir(self::$kernel->getRootDir().DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'web');
-        $container        = self::$kernel->getContainer();
+        chdir(self::$kernel->getRootDir() . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'web');
+        $container = self::$kernel->getContainer();
         $this->tmpManager = $container->get(TmpFilesManagerInterface::class);
     }
 
-    public function testFileCreating()
+    public function testCreateFile()
     {
         $file1 = $this->tmpManager->createFile('test1');
         $this->assertEquals('test1', file_get_contents($file1->getPathname()));
@@ -30,7 +30,7 @@ class TmpFilesManagerTest extends WebTestCase
         $this->assertEquals('test2', file_get_contents($file2->getPathname()));
     }
 
-    public function testFileRemoving()
+    public function testCeleteAll()
     {
         $file = $this->tmpManager->createFile();
 
