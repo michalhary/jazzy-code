@@ -43,6 +43,7 @@ class Gnome
      * @Assert\Type("string")
      * @Assert\NotNull
      * @Assert\Length(min=1, max=1000)
+     * @Assert\NotBlank
      */
     private $name;
 
@@ -153,7 +154,7 @@ class Gnome
      *
      * @return Gnome
      */
-    public function setName(string $name): Gnome
+    public function setName(string $name = null): Gnome
     {
         $this->name = $name;
 
@@ -177,7 +178,7 @@ class Gnome
      *
      * @return Gnome
      */
-    public function setStrength(int $strength): Gnome
+    public function setStrength(int $strength = null): Gnome
     {
         $this->strength = $strength;
 
@@ -201,7 +202,7 @@ class Gnome
      *
      * @return Gnome
      */
-    public function setAge(int $age): Gnome
+    public function setAge(int $age = null): Gnome
     {
         $this->age = $age;
 
