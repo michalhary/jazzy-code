@@ -1,6 +1,8 @@
 Jazzy recruitment task
 ======================
 
+[![Build Status](https://travis-ci.org/michalhary/jazzy-code.svg?branch=master)](https://travis-ci.org/michalhary/jazzy-code)
+
 ## Requirements
 
 - PHP >= 7.1,
