@@ -1,0 +1,9 @@
+includes:
+	- vendor/phpstan/phpstan-doctrine/extension.neon
+	- vendor/lookyman/phpstan-symfony/extension.neon
+	
+parameters:
+	symfony:
+		srcDevDebugProjectContainerXml: %rootDir%/../../../var/cache/dev/appDevDebugProjectContainer.xml
+	ignoreErrors:
+		- '#Service "" is not registered in the container\.#'
