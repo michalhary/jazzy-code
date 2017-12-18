@@ -46,7 +46,7 @@ class Image
      */
     public function __toString()
     {
-        return (string)$this->filename;
+        return $this->filename;
     }
 
     /**
@@ -62,7 +62,7 @@ class Image
     /**
      * Get filename
      *
-     * @return string|null
+     * @return string
      */
     public function getFilename(): string
     {

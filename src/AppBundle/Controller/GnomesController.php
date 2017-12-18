@@ -122,7 +122,7 @@ final class GnomesController extends AbstractController
      * )
      *
      * @param Request $request
-     * @param int id Gnome id
+     * @param int $id Gnome id
      * @param ReadGnomeAction $action
      *
      * @return Gnome
@@ -172,7 +172,7 @@ final class GnomesController extends AbstractController
      * )
      *
      * @param Request $request
-     * @param int id Gnome id
+     * @param int $id Gnome id
      * @param UpdateGnomeAction $action
      *
      * @return Gnome
@@ -207,7 +207,7 @@ final class GnomesController extends AbstractController
      *
      * @param Request $request
      *
-     * @param int id Gnome id
+     * @param int $id Gnome id
      * @param DeleteGnomeAction $action
      *
      * @return bool

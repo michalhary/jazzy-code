@@ -25,6 +25,9 @@ final class EntityListenerResolver extends DefaultEntityListenerResolver
         $this->container = $container;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function resolve($className)
     {
         /*

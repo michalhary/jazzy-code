@@ -64,7 +64,7 @@ final class ImageHandler implements SubscribingHandlerInterface
      * Deserialize from JSON
      *
      * @param VisitorInterface $visitor
-     * @param string $data JSON
+     * @param string|null $data JSON
      * @param array $type
      * @param Context $context
      *
@@ -109,7 +109,7 @@ final class ImageHandler implements SubscribingHandlerInterface
      * @param array $type
      * @param Context $context
      *
-     * @return string JSON
+     * @return string|null JSON
      */
     public function serializeToJson(
         VisitorInterface $visitor,

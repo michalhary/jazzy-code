@@ -3,8 +3,8 @@
 namespace AppBundle\Action\AbstractCRUD;
 
 use AppBundle\Exception\NotFoundApiException;
+use Doctrine\Common\Persistence\ObjectRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\EntityRepository;
 
 /**
  * Abstract CRUD Action
@@ -34,7 +34,7 @@ abstract class AbstractCrudAction
      *
      * @param int $id object id
      *
-     * @return object
+     * @return mixed
      *
      * @throws NotFoundApiException
      */
@@ -53,9 +53,9 @@ abstract class AbstractCrudAction
     /**
      * Get entity repository
      *
-     * @return EntityRepository
+     * @return ObjectRepository
      */
-    protected function getRepository(): EntityRepository
+    protected function getRepository(): ObjectRepository
     {
         return $this->em->getRepository($this->getDataClass());
     }

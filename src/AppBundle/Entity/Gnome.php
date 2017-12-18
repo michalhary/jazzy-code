@@ -34,7 +34,7 @@ class Gnome
     /**
      * Gnome's name
      *
-     * @var string
+     * @var string|null
      *
      * @ORM\Column(name="name", type="string", length=1000)
      *
@@ -49,7 +49,7 @@ class Gnome
     /**
      * Gnome's strength
      *
-     * @var int
+     * @var int|null
      *
      * @ORM\Column(name="strength", type="smallint")
      *
@@ -64,7 +64,7 @@ class Gnome
     /**
      * Gnome's age
      *
-     * @var int
+     * @var int|null
      *
      * @ORM\Column(name="age", type="smallint")
      *
@@ -79,7 +79,7 @@ class Gnome
     /**
      * Gnome's avatar (image URL)
      *
-     * @var Image
+     * @var Image|null
      *
      * @ORM\ManyToOne(targetEntity="Image", cascade={"persist", "remove"}, fetch="LAZY")
      * @ORM\JoinColumn(name="avatar_id", referencedColumnName="id", nullable=true)
